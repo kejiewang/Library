@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutShop.cshtml";
+    List<电商.Areas.Admin.Models.Product> list = ViewBag.list;
+}
+
+<ol class="breadcrumb">
+    <li><a href="/admin/shop/index">首页</a></li>
+    <li><a href="/admin/shop/type">商品类别</a></li>
+    <li class="active">商品</li>
+</ol>
+    
+    @foreach (电商.Areas.Admin.Models.Product item in list)
+    {
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="/admin/shop/product?id=@item.id">
+                    <img class="media-object" src="/upload/@item.pic" data-holder-rendered="true" style="width: 64px; height: 64px;">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">@item.name</h4>
+                ￥@item.price
+            </div>
+        </div>
+
+    }
+        
+

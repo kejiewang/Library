@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C5FA08F-81C5-4542-824B-01598B55203C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>电商</RootNamespace>
+    <AssemblyName>电商</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.css" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.min.css" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bootstrap-3.3.7-dist\js\bootstrap.js" />
+    <Content Include="bootstrap-3.3.7-dist\js\bootstrap.min.js" />
+    <Content Include="bootstrap-3.3.7-dist\js\jquery-3.2.1.min.js" />
+    <Content Include="bootstrap-3.3.7-dist\js\npm.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\css\bootstrap.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\css\style-responsive.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\css\style.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\css\table-responsive.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\css\to-do.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\css\zabuto_calendar.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\blog-bg.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\checkbox-gray.png" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\fr-01.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\fr-02.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\fr-03.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\fr-04.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\fr-05.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\fr-06.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\fr-07.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\fr-08.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\fr-09.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\fr-10.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\fr-11.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\instagram.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\login-bg.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\lorde.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\mask.png" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\ny.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\portfolio\port01.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\portfolio\port02.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\portfolio\port03.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\portfolio\port04.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\portfolio\port05.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\portfolio\port06.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\product.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\product.png" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\profile-01.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\profile-02.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\radio-gray.png" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\ui-danro.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\ui-divya.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\ui-sam.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\ui-sherman.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\ui-zac.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\weather.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\zoom.png" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\bootstrap-switch.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\bootstrap.min.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\calendar-conf-events.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\chart-master\Chart.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\chartjs-conf.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\common-scripts.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\easy-pie-chart.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\fancybox\jquery.fancybox.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\fancybox\jquery.fancybox.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\form-component.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter-conf.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter\css\jquery.gritter.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter\css\jquery.gritter0.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter\images\gritter-light.png" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter\images\gritter-long.png" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter\images\gritter.png" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter\images\ie-spacer.gif" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter\js\jquery.gritter.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery-1.8.3.min.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery-easy-pie-chart\jquery.easy-pie-chart.css" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery.backstretch.min.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery.dcjqaccordion.2.7.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery.nicescroll.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery.scrollTo.min.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery.sparkline.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery.tagsinput.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\morris-conf.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\sparkline-chart.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\tasks.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\zabuto_calendar.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\lineicons\fonts\linecons.svg" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\lineicons\index.html" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\lineicons\lte-ie7.js" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\lineicons\style.css" />
+    <Content Include="Other\bkt_1_dashgumfree\basic_table.html" />
+    <Content Include="Other\bkt_1_dashgumfree\blank.html" />
+    <Content Include="Other\bkt_1_dashgumfree\buttons.html" />
+    <Content Include="Other\bkt_1_dashgumfree\calendar.html" />
+    <Content Include="Other\bkt_1_dashgumfree\chartjs.html" />
+    <Content Include="Other\bkt_1_dashgumfree\form_component.html" />
+    <Content Include="Other\bkt_1_dashgumfree\gallery.html" />
+    <Content Include="Other\bkt_1_dashgumfree\general.html" />
+    <Content Include="Other\bkt_1_dashgumfree\index.html" />
+    <Content Include="Other\bkt_1_dashgumfree\lock_screen.html" />
+    <Content Include="Other\bkt_1_dashgumfree\login.html" />
+    <Content Include="Other\bkt_1_dashgumfree\morris.html" />
+    <Content Include="Other\bkt_1_dashgumfree\panels.html" />
+    <Content Include="Other\bkt_1_dashgumfree\responsive_table.html" />
+    <Content Include="Other\bkt_1_dashgumfree\timg %281%29.jpg" />
+    <Content Include="Other\bkt_1_dashgumfree\todo_list.html" />
+    <Content Include="Other\bkt_1_dashgumfree\说明.txt" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Add.cshtml" />
+    <EntityDeploy Include="Areas\Admin\Models\Product.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Product.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Areas\Admin\Models\Product.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Product.edmx</DependentUpon>
+      <LastGenOutput>Product.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Admin\Models\Product.edmx.diagram">
+      <DependentUpon>Product.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Models\Product.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Product.edmx</DependentUpon>
+      <LastGenOutput>Product1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Admin\Views\Admin\edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\listCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\listCategoryAdd.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\editCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutShop.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\Type.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\Product.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\Basket.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\UserList.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\OrderList.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Other\icon.jpg" />
+    <Content Include="Other\timg.jpg" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="upload\61d1bc08-dbe4-4c0b-912a-048d070fa50a.jpg" />
+    <Content Include="upload\928e4b0e-26eb-4e5a-a9fc-5a6c544fcfe7.jpg" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShopController.cs" />
+    <Compile Include="Areas\Admin\Models\Admin.cs">
+      <DependentUpon>Product.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Basket.cs">
+      <DependentUpon>Product.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Category.cs">
+      <DependentUpon>Product.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Order.cs">
+      <DependentUpon>Product.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Product.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Product.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Product.cs">
+      <DependentUpon>Product.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Product.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Product.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Product1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Product.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\User.cs">
+      <DependentUpon>Product.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.min.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Other\bkt_1_dashgumfree\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\3000套网站模板免费拥有.url" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\css\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\font-awesome\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\font-awesome\css\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\font-awesome\fonts\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\fonts\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\friends\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\img\portfolio\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\bootstrap-inputmask\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\chart-master\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\fancybox\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\fullcalendar\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter\css\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter\images\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\gritter\js\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\js\jquery-easy-pie-chart\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\lineicons\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\lineicons\fonts\.DS_Store" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\lineicons\fonts\linecons.eot" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\lineicons\fonts\linecons.ttf" />
+    <Content Include="Other\bkt_1_dashgumfree\assets\lineicons\fonts\linecons.woff" />
+    <Content Include="Other\bkt_1_dashgumfree\找网站模板就上【模板之家】cssMoban.com.url" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\upload\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63453</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63453/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

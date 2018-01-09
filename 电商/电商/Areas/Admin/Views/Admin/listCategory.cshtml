@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "listIndex";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<电商.Areas.Admin.Models.Category> list = ViewBag.categorylist;
+    string search = ViewBag.search;
+
+}
+<section class="wrapper">
+    <h3>
+        <i class="fa fa-angle-right"></i>
+        <a href="/admin/admin/listCategory">类别管理</a>
+    </h3>
+    <!-- BASIC FORM ELELEMNTS -->
+    <div class="row mt">
+        <div class="col-lg-12">
+
+            <div style="position:relative">
+                <form action="/admin/admin/listCategory" method="post">
+                    <input type="text" name="search" value="@search" /> <input type="submit" value="查找" class="btn btn-primary" />
+                </form>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i>类别清单</h4>
+                            <hr>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>类别名称</th>
+                                        <th>图片</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (电商.Areas.Admin.Models.Category item in list)
+                                    {
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            <td><a href="/upload/@item.pic_"><img src="/upload/@item.pic_" style="width:20px;height:20px;" /></a></td>
+                        
+                                            <td>
+
+
+                                                <a href="/admin/admin/editCategory?id=@item.Id"><i class="fa fa-pencil"></i></a>
+                                                <a href="javascript:del(@item.Id)" style="padding:30px"><i class="fa fa-trash-o "></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- col-lg-12-->
+    </div><!-- /row -->
+
+</section><! --/wrapper -->
+<script type="text/javascript">
+    function del(id) {
+        var result = window.confirm("是否删除");
+        if (result) {
+            location.href = "/admin/admin/DelCategory?Id=" + id;
+        }
+    }
+</script>
+
+

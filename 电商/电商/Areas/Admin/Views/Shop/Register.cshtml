@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutShop.cshtml";
+        List<string> username = ViewBag.name;
+}
+
+<form onsubmit="return check()"  method="post" action="/admin/shop/registersave">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <ul style="list-style:none;">
+                <li>
+                    <label>用户名</label>
+                    <input id="txtName" class="form-control" type="text" value="" name="txtName" />
+                </li>
+                <li>
+                    <label>密码</label>
+                    <input id="txtPwd" type="password" name="txtPwd" class="form-control" />
+                </li>
+                <li>
+                    <input type="submit" id="se" value="注册" class="btn btn-default" />
+                    <input type="reset" value="重置" class="btn btn-default" />
+
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</form>
+<script src="~/bootstrap-3.3.7-dist/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    
+    function check() {
+
+        var name = $("#txtName").val();
+        var pwd = $("#txtPwd").val();
+        $("form :input.form-control").trigger('blur');
+        var numError = $('form .onError').length;
+        if (numError) {
+            return false;
+        }
+
+        if (name == "") {
+
+            $("#txtNameMessage").addClass("warn");
+            var a = $("#txtNameMessage").text();
+            return false;
+        }
+        if (pwd == "") {
+            window.alert("密码不能为空");
+            return false;
+        }
+        return true;
+    }
+    //]]>
+</script>
+

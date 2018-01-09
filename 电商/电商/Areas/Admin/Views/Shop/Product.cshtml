@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutShop.cshtml";
+    电商.Areas.Admin.Models.Product product = ViewBag.product;
+
+}
+
+
+<ol class="breadcrumb">
+    <li><a href="/admin/shop/index">首页</a></li>
+    <li><a href="/admin/shop/type">商品类别</a></li>
+    <li><a href="/admin/shop/detail?id=@product.CagegoryId">商品</a></li>
+    <li class="active">商品详情</li>
+</ol>
+
+<div style="max-width:500px; margin:0 auto;">
+    <div class="page-header">
+        <h1 style="text-align:center">@product.name </h1>
+    </div>
+    <div id="images" style="margin:30px; text-align:center;">
+        <img src="/upload/@product.pic" style="width:100px; height:100px" />
+    </div>
+    <div style="background-color:white;">
+        商品描述
+        <p>价格：￥@product.price</p>
+        <p>余量：@product.num</p>
+        <input onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" id="num">
+        <button onclick="send();" class="btn-default">加入购物车</button>
+    </div>
+    <div>
+
+    </div>
+</div>
+<script src="~/bootstrap-3.3.7-dist/js/jquery-3.2.1.min.js"></script>
+<script>
+
+
+    function send() {
+        $.ajax({
+            type: 'POST',
+            url: '/admin/shop/addbasket',
+            data: {
+                id: '@product.id',
+                num: $('#num').val()
+            },
+            success: function (e) {
+                alert(e);
+                if (e == "加入成功") {
+                    window.location.href = "/admin/shop/basket";
+                }
+                else if (e == "请先登陆") {
+                    window.location.href = "/admin/shop/login";
+                }
+            }
+        });
+    }
+
+</script>
+
+
+

@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutShop.cshtml";
+    List<电商.Areas.Admin.Models.Category> list = ViewBag.list;
+}
+
+
+<div class="page-header">
+    <h1 style="text-align:center">商品类别 </h1>
+</div>
+<ol class="breadcrumb">
+    <li><a href="/admin/shop/index">首页</a></li>
+    <li class="active">商品类别</li>
+</ol>
+<div class="row">
+
+    @foreach (电商.Areas.Admin.Models.Category item in list)
+    {
+        <div class="col-xs-6 col-md-3">
+            <a href="/admin/shop/detail?id=@item.Id" class="thumbnail">
+                <img src="/upload/@item.pic_">
+                <p style="text-align:center">@item.Name</p>
+            </a>
+        </div>
+    }
+
+
+
+</div>

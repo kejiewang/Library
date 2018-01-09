@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutShop.cshtml";
+}
+
+<form onsubmit="return check()" method="post" action="/admin/shop/check" >
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <ul style="list-style:none;">
+            <li>
+                请输入姓名
+                <input id="txtName" class="form-control" type="text" value="" name="txtName" />
+                <span id="txtNameMessage" class="hide">密码不能为空</span>
+            </li>
+            <li>
+                请输入密码<input id="txtPwd" type="password" name="txtPwd"class="form-control" />
+            </li>
+            <li>
+                <input type="submit" value="登陆" class="btn btn-default" />
+                <input type="button" value="注册" class="btn btn-default" onclick="window.open('/admin/shop/register')" />
+
+            </li>
+            </ul>
+        </div>
+       
+    </div>
+
+ 
+</form>
+
+
