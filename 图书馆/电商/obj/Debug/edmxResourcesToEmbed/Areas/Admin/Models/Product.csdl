@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="num" Type="Int32" />
+    <Property Name="pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="typid" Type="Int32" />
+    <Property Name="CagegoryId" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Model.FK__Product__Cagegor__0519C6AF" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Baskets" Relationship="Model.FK__Basket__producti__145C0A3F" FromRole="Product" ToRole="Basket" />
+    <NavigationProperty Name="Orders" Relationship="Model.FK__Order__productid__182C9B23" FromRole="Product" ToRole="Order" />
+  </EntityType>
+  <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="Categories" EntityType="Model.Category" />
+    <AssociationSet Name="FK__Product__Cagegor__0519C6AF" Association="Model.FK__Product__Cagegor__0519C6AF">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <EntitySet Name="Admins" EntityType="Model.Admin" />
+    <EntitySet Name="Users" EntityType="Model.User" />
+    <EntitySet Name="Baskets" EntityType="Model.Basket" />
+    <AssociationSet Name="FK__Basket__name__15502E78" Association="Model.FK__Basket__name__15502E78">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Basket" EntitySet="Baskets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Basket__producti__145C0A3F" Association="Model.FK__Basket__producti__145C0A3F">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Basket" EntitySet="Baskets" />
+    </AssociationSet>
+    <EntitySet Name="Orders" EntityType="Model.Order" />
+    <AssociationSet Name="FK__Order__name__1920BF5C" Association="Model.FK__Order__name__1920BF5C">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__productid__182C9B23" Association="Model.FK__Order__productid__182C9B23">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pic_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Model.FK__Product__Cagegor__0519C6AF" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK__Product__Cagegor__0519C6AF">
+    <End Type="Model.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="Model.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CagegoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="passward" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="passward" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Baskets" Relationship="Model.FK__Basket__name__15502E78" FromRole="User" ToRole="Basket" />
+    <NavigationProperty Name="Orders" Relationship="Model.FK__Order__name__1920BF5C" FromRole="User" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Basket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="num" Type="Int32" />
+    <Property Name="productid" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Model.FK__Basket__name__15502E78" FromRole="Basket" ToRole="User" />
+    <NavigationProperty Name="Product" Relationship="Model.FK__Basket__producti__145C0A3F" FromRole="Basket" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK__Basket__name__15502E78">
+    <End Type="Model.User" Role="User" Multiplicity="0..1" />
+    <End Type="Model.Basket" Role="Basket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="Basket">
+        <PropertyRef Name="name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Basket__producti__145C0A3F">
+    <End Type="Model.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="Model.Basket" Role="Basket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Basket">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="num" Type="Int32" />
+    <Property Name="productid" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Model.FK__Order__name__1920BF5C" FromRole="Order" ToRole="User" />
+    <NavigationProperty Name="Product" Relationship="Model.FK__Order__productid__182C9B23" FromRole="Order" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK__Order__name__1920BF5C">
+    <End Type="Model.User" Role="User" Multiplicity="0..1" />
+    <End Type="Model.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__productid__182C9B23">
+    <End Type="Model.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="Model.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

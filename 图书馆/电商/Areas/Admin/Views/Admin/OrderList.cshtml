@@ -1,0 +1,99 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<电商.Areas.Admin.Models.order> list = ViewBag.list;
+    string search = ViewBag.search;
+}
+
+<section class="wrapper">
+    <h3>
+        <i class="fa fa-angle-right"></i>
+        <a href="/admin/admin/orderlist">订单列表</a>
+    </h3>
+    <!-- BASIC FORM ELELEMNTS -->
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div style="position:relative">
+                <form action="/admin/admin/orderlist" method="post">
+                    <input type="text" name="search" value="@search" /> <input type="submit" value="查找" class="btn btn-primary" />
+                </form>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i>订单列表</h4>
+                            <hr>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>订单编号</th>
+                                        <th>下单时间</th>
+                                        <th>完成时间</th>
+                                        <th>订购数目</th>
+                                        <th>图书名称</th>
+                                        <th>出版社名称</th>
+                                        <th>操作</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (电商.Areas.Admin.Models.order item in list)
+                                    {
+                                        <tr>
+                                            <td>@item.orderId</td>
+                                            <td>@item.time</td>
+                                            @{
+                                        if (item.isFinish == 1)
+                                        {
+                                            <td>@item.endtime</td>
+                                        }
+                                        else
+                                        {
+                                            <td>未完成</td>
+                                        }
+                                            }
+                                            <td>@item.num</td>
+                                            
+                                            <td>@item.book.name</td>
+                                            <td>@item.publish.name</td>
+                                            <td>
+                                                
+
+                                                @{
+
+                                        if (item.isFinish == 0)
+                                        {
+                                            <a href="/admin/admin/AddtoLibrary?id=@item.orderId"><i class="glyphicon glyphicon-ok"></i></a>
+                                            <a href="javascript:del(@item.orderId)" style="padding:30px"><i class="fa fa-trash-o "></i></a>
+
+                                        }
+
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td>
+                                            <a href="/admin/admin/orderlistadd"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- col-lg-12-->
+    </div><!-- /row -->
+
+</section><! --/wrapper -->
+<script type="text/javascript">
+    function del(id) {
+        var result = window.confirm("是否删除");
+        if (result) {
+            location.href = "/admin/admin/orderlistdel?Id=" + id;
+        }
+    }
+</script>

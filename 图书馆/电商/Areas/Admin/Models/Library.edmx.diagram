@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d919fd8529c744a1a6e0132ffd3bcf86" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.person" Width="1.5" PointX="1.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.book" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="Model.publish" Width="1.5" PointX="0.75" PointY="4" />
+        <AssociationConnector Association="Model.FK__book__pulish_id__35BCFE0A" />
+        <EntityTypeShape EntityType="Model.order" Width="1.5" PointX="5.25" PointY="4" />
+        <AssociationConnector Association="Model.order_book" />
+        <AssociationConnector Association="Model.FK__order__publish_i__2F10007B" />
+        <EntityTypeShape EntityType="Model.bookstatus" Width="1.5" PointX="4.625" PointY="0.5" />
+        <AssociationConnector Association="Model.bookstatus_book" />
+        <EntityTypeShape EntityType="Model.bring" Width="1.5" PointX="6.875" PointY="0.75" />
+        <AssociationConnector Association="Model.bring_book" />
+        <AssociationConnector Association="Model.bring_person" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

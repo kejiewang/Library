@@ -1,0 +1,83 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<section class="wrapper">
+    <h3>
+        <i class="fa fa-angle-right"></i>
+        <a href="/admin/admin/publishlist">出版社列表</a>/<a href="/admin/admin/publishlistadd">增加</a>
+    </h3>
+    <!-- BASIC FORM ELELEMNTS -->
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div class="form-panel">
+
+                <form class="form-horizontal style-form" action="/admin/admin/publishlistaddsave" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">出版社</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" value="" name="name" id="name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">号码</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="phone" value="" id="phone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">地址</label>
+                        <div class="col-sm-10">
+                            <div>
+                                <input class="form-control" type="text" name="location" value="" id="location">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">邮箱</label>
+                        <div class="col-sm-10">
+                            <div>
+                                <input class="form-control" type="text" name="email" value="" id="email">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                </form>
+                <div>
+                    <button class="btn btn-primary" onclick="send()">保存</button>
+                    
+                </div>
+            </div>
+        </div><!-- col-lg-12-->
+    </div><!-- /row -->
+
+</section><! --/wrapper -->
+<script src="~/bootstrap-3.3.7-dist/js/jquery-3.2.1.min.js"></script>
+
+<script>
+    function send() {
+        $.ajax({
+            type: 'POST',
+            url: '/admin/admin/PublishListAddSave',
+            data: {
+                name: $("#name").val(),
+                phone: $("#phone").val(),
+                location: $("#location").val(),
+                email: $("#location").val()
+            },
+            success: function (e) {
+                alert(e);
+                if(e == "添加成功")
+                window.location.href = "/admin/admin/PublishList"
+            }
+        });
+    }
+</script>
+

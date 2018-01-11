@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    电商.Areas.Admin.Models.person p = ViewBag.p;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<section class="wrapper">
+    <h3>
+        <i class="fa fa-angle-right"></i>
+        <a href="/admin/admin/index">用户管理</a>/<a href="/admin/admin/edit">编辑</a>
+    </h3>
+    <!-- BASIC FORM ELELEMNTS -->
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div class="form-panel">
+
+                <form class="form-horizontal style-form" action="/admin/admin/editsave" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">用户名字</label>
+                        <input class="hidden" type="number" value="@p.id" name="Id"/>
+                         <div class="col-sm-10">
+                            <input class="form-control" type="text" value="@p.name" name="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">用户号码</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="phone" value="@p.phone">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">用户工作</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="work" value="@p.work">
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <input type="submit" class="btn btn-primary" value="保存" />
+                        <input type="reset" class="btn btn-primary" value="重置" />
+                    </div>
+                </form>
+            </div>
+        </div><!-- col-lg-12-->
+    </div><!-- /row -->
+
+</section><! --/wrapper -->

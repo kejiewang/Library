@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<电商.Areas.Admin.Models.book> list = ViewBag.list;
+    电商.Areas.Admin.Models.publish publish = ViewBag.publish;
+    string search = ViewBag.search;
+}
+
+<section class="wrapper">
+    <h3>
+        <i class="fa fa-angle-right"></i>
+        <a href="/admin/admin/publishlist">出版社列表</a>/<a href="#">图书列表</a>
+    </h3>
+    <!-- BASIC FORM ELELEMNTS -->
+    <div class="row mt">
+        <div class="col-lg-12">
+
+            <div style="position:relative">
+                <form action="/admin/admin/booklist?publishid=@publish.id" method="post">
+                    <input type="text" name="search" value="@search" /> <input type="submit" value="查找" class="btn btn-primary" />
+                </form>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i>@publish.name</h4>
+                            <hr>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>图书名字</th>
+                                        <th>图书类型</th>
+                                        <th>图书价格</th>
+                                        <th>出版社名字</th>
+                                        <th>操作</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (电商.Areas.Admin.Models.book item in list)
+                                    {
+                                        <tr>
+                                            <td>@item.name</td>
+                                            <td>@item.type</td>
+                                            <td>@item.price</td>
+                                            <td>@item.publish.name</td>
+                                            <td>
+                                                <a href="/admin/admin/booklistedit?id=@item.id"><i class="fa fa-pencil"></i></a>
+                                                <a href="javascript:del(@item.id)" style="padding:30px"><i class="fa fa-trash-o "></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td>
+                                            <a href="/admin/admin/booklistadd?publishid=@publish.id"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- col-lg-12-->
+    </div><!-- /row -->
+
+</section><! --/wrapper -->
+<script type="text/javascript">
+    function del(id) {
+        var result = window.confirm("是否删除");
+        if (result) {
+            location.href = "/admin/admin/booklistdel?Id=" + id;
+        }
+    }
+</script>

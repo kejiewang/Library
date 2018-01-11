@@ -1,0 +1,91 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<电商.Areas.Admin.Models.bring> list = ViewBag.list;
+    string search = ViewBag.search;
+}
+
+<section class="wrapper">
+    <h3>
+        <i class="fa fa-angle-right"></i>
+        <a href="#">借阅列表</a>
+    </h3>
+    <!-- BASIC FORM ELELEMNTS -->
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div style="position:relative">
+                <form action="/admin/admin/BringList" method="post">
+                    <input type="text" name="search" value="@search" /> <input type="submit" value="查找" class="btn btn-primary" />
+                </form>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i>订单列表</h4>
+                            <hr>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>用户编号</th>
+                                        <th>用户姓名</th>
+                                        <th>图书编号</th>
+                                        <th>图书名称</th>
+                                        <th>借阅时间</th>
+                                        <th>归还时间</th>
+                                        <th>操作</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (电商.Areas.Admin.Models.bring item in list)
+                                    {
+                                        <tr>
+                                            <td>@item.person_id</td>
+                                            <td>@item.person.name</td>
+                                            <td>@item.book_id</td>
+                                            <td>@item.bookstatus.book.name</td>
+                                            <td>@item.bringtime</td>
+                                            @{
+                                        if (item.isreturn == 0)
+                                        {
+                                            <td>暂未归还</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@item.returntime</td>
+                                        }
+                                            }
+                                            <td>
+                                                
+                                               
+                                            <td>
+                                                @{
+                                                    if (item.isreturn == 0)
+                                                    {
+                                                        <a href="/admin/admin/ReturnBook?id=@item.id"><i class="glyphicon glyphicon-ok"></i></a>
+                                                    }
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                    
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- col-lg-12-->
+    </div><!-- /row -->
+
+</section><! --/wrapper -->
+<script type="text/javascript">
+    function del(id) {
+        var result = window.confirm("是否删除");
+        if (result) {
+            location.href = "/admin/admin/orderlistdel?Id=" + id;
+        }
+    }
+</script>

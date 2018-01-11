@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<电商.Areas.Admin.Models.bookstatus> list = ViewBag.list;
+    string search = ViewBag.search;
+
+}
+<section class="wrapper">
+    <h3>
+        <i class="fa fa-angle-right"></i>
+        <a href="/admin/admin/BookStatusList">书籍列表</a>
+    </h3>
+    <!-- BASIC FORM ELELEMNTS -->
+    <div class="row mt">
+        <div class="col-lg-12">
+
+            <div style="position:relative">
+                <form action="/admin/admin/BookStatusList" method="post">
+                    <input type="text" name="search" value="@search" /> <input type="submit" value="查找" class="btn btn-primary" />
+                </form>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i>图书列表</h4>
+                            <hr>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>书籍编号</th>
+                                        <th>书名</th>
+                                        <th>类型</th>
+                                        <th>出版社</th>
+                                        <th>位置</th>
+                                        <th>可借数量</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (电商.Areas.Admin.Models.bookstatus item in list)
+                                    {
+                                        <tr>
+                                            <td>@item.id</td>
+                                            <td>@item.book.name</td>
+                                            <td>@item.book.type</td>
+                                            <td>@item.book.publish.name</td>
+                                            <td>@item.location</td>
+                                            <td>@(item.num-item.bringnum)</td>
+                                            <td>
+                                                <a href="/admin/admin/BringListAdd?id=@item.id">借阅</a>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- col-lg-12-->
+    </div><!-- /row -->
+
+</section><! --/wrapper -->
+<script type="text/javascript">
+    function del(id) {
+        var result = window.confirm("是否删除");
+        if (result) {
+            location.href = "/admin/admin/del?Id=" + id;
+        }
+    }
+</script>
+
+

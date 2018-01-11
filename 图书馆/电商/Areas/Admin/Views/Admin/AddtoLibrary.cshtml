@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int id = ViewBag.orderid;
+    string location = ViewBag.location;
+    电商.Areas.Admin.Models.order o = ViewBag.o;
+    
+}
+
+<!DOCTYPE html>
+
+<section class="wrapper">
+    <h3>
+        <i class="fa fa-angle-right"></i>
+        <a href="#">入库操作</a>
+    </h3>
+    <!-- BASIC FORM ELELEMNTS -->
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div class="form-panel">
+
+                <form class="form-horizontal style-form" action="/admin/admin/AddtoLibrarySave" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">存放位置</label>
+                        <div class="col-sm-10">
+                            <input class="hidden" type="number" value="@id" name="orderid" />
+                            <input class="form-control" type="text" value="@location" name="location">
+                        </div>
+                        <label class="col-sm-2 col-sm-2 control-label">订单完成时间</label>
+                        <div class="col-sm-10">
+
+                            <input class="form-control" type="date" value="" name="finishtime" min="@o.time"> 
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="submit" class="btn btn-primary" value="入库" />
+                            <input type="reset" class="btn btn-primary" value="重置" />
+                        </div>
+                    </div>
+                </form>
+                
+                
+                
+            </div>
+        </div><!-- col-lg-12-->
+    </div><!-- /row -->
+
+</section><! --/wrapper -->

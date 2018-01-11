@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities4">
+    <EntitySetMapping Name="person">
+      <EntityTypeMapping TypeName="Model.person">
+        <MappingFragment StoreEntitySet="person">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="work" ColumnName="work" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="book">
+      <EntityTypeMapping TypeName="Model.book">
+        <MappingFragment StoreEntitySet="book">
+          <ScalarProperty Name="isdeal" ColumnName="isdeal" />
+          <ScalarProperty Name="pulish_id" ColumnName="pulish_id" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="publish">
+      <EntityTypeMapping TypeName="Model.publish">
+        <MappingFragment StoreEntitySet="publish">
+          <ScalarProperty Name="isdeal" ColumnName="isdeal" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order">
+      <EntityTypeMapping TypeName="Model.order">
+        <MappingFragment StoreEntitySet="order">
+          <ScalarProperty Name="endtime" ColumnName="endtime" />
+          <ScalarProperty Name="publish_id" ColumnName="publish_id" />
+          <ScalarProperty Name="book_id" ColumnName="book_id" />
+          <ScalarProperty Name="isFinish" ColumnName="isFinish" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bookstatus">
+      <EntityTypeMapping TypeName="Model.bookstatus">
+        <MappingFragment StoreEntitySet="bookstatus">
+          <ScalarProperty Name="bringnum" ColumnName="bringnum" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="book_id" ColumnName="book_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bring">
+      <EntityTypeMapping TypeName="Model.bring">
+        <MappingFragment StoreEntitySet="bring">
+          <ScalarProperty Name="returntime" ColumnName="returntime" />
+          <ScalarProperty Name="isreturn" ColumnName="isreturn" />
+          <ScalarProperty Name="book_id" ColumnName="book_id" />
+          <ScalarProperty Name="bringtime" ColumnName="bringtime" />
+          <ScalarProperty Name="person_id" ColumnName="person_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

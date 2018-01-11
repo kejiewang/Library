@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="person">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="work" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="bring" Relationship="Model.bring_person" FromRole="person" ToRole="bring" />
+  </EntityType>
+  <EntityContainer Name="Entities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="person" EntityType="Self.person" />
+    <EntitySet Name="book" EntityType="Model.book" />
+    <EntitySet Name="publish" EntityType="Model.publish" />
+    <AssociationSet Name="FK__book__pulish_id__35BCFE0A" Association="Model.FK__book__pulish_id__35BCFE0A">
+      <End Role="publish" EntitySet="publish" />
+      <End Role="book" EntitySet="book" />
+    </AssociationSet>
+    <EntitySet Name="order" EntityType="Model.order" />
+    <AssociationSet Name="order_book" Association="Model.order_book">
+      <End Role="book" EntitySet="book" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order__publish_i__2F10007B" Association="Model.FK__order__publish_i__2F10007B">
+      <End Role="publish" EntitySet="publish" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <EntitySet Name="bookstatus" EntityType="Model.bookstatus" />
+    <AssociationSet Name="bookstatus_book" Association="Model.bookstatus_book">
+      <End Role="book" EntitySet="book" />
+      <End Role="bookstatus" EntitySet="bookstatus" />
+    </AssociationSet>
+    <EntitySet Name="bring" EntityType="Model.bring" />
+    <AssociationSet Name="bring_book" Association="Model.bring_book">
+      <End Role="bookstatus" EntitySet="bookstatus" />
+      <End Role="bring" EntitySet="bring" />
+    </AssociationSet>
+    <AssociationSet Name="bring_person" Association="Model.bring_person">
+      <End Role="person" EntitySet="person" />
+      <End Role="bring" EntitySet="bring" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="book">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="pulish_id" Type="Int32" Nullable="false" />
+    <Property Name="isdeal" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="publish" Relationship="Model.FK__book__pulish_id__35BCFE0A" FromRole="book" ToRole="publish" />
+    <NavigationProperty Name="order" Relationship="Model.order_book" FromRole="book" ToRole="order" />
+    <NavigationProperty Name="bookstatus" Relationship="Model.bookstatus_book" FromRole="book" ToRole="bookstatus" />
+  </EntityType>
+  <EntityType Name="publish">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="location" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="isdeal" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="book" Relationship="Model.FK__book__pulish_id__35BCFE0A" FromRole="publish" ToRole="book" />
+    <NavigationProperty Name="order" Relationship="Model.FK__order__publish_i__2F10007B" FromRole="publish" ToRole="order" />
+  </EntityType>
+  <Association Name="FK__book__pulish_id__35BCFE0A">
+    <End Type="Model.publish" Role="publish" Multiplicity="1" />
+    <End Type="Model.book" Role="book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="publish">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="book">
+        <PropertyRef Name="pulish_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="time" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="num" Type="Int32" Nullable="false" />
+    <Property Name="isFinish" Type="Int32" Nullable="false" />
+    <Property Name="book_id" Type="Int32" Nullable="false" />
+    <Property Name="publish_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="book" Relationship="Model.order_book" FromRole="order" ToRole="book" />
+    <NavigationProperty Name="publish" Relationship="Model.FK__order__publish_i__2F10007B" FromRole="order" ToRole="publish" />
+    <Property Name="endtime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="order_book">
+    <End Type="Model.book" Role="book" Multiplicity="1" />
+    <End Type="Model.order" Role="order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order__publish_i__2F10007B">
+    <End Type="Model.publish" Role="publish" Multiplicity="1" />
+    <End Type="Model.order" Role="order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="publish">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="publish_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="bookstatus">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="book_id" Type="Int32" Nullable="false" />
+    <Property Name="num" Type="Int32" Nullable="false" />
+    <Property Name="location" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="bringnum" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="book" Relationship="Model.bookstatus_book" FromRole="bookstatus" ToRole="book" />
+    <NavigationProperty Name="bring" Relationship="Model.bring_book" FromRole="bookstatus" ToRole="bring" />
+  </EntityType>
+  <Association Name="bookstatus_book">
+    <End Type="Model.book" Role="book" Multiplicity="1" />
+    <End Type="Model.bookstatus" Role="bookstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bookstatus">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="bring">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="person_id" Type="Int32" Nullable="false" />
+    <Property Name="bringtime" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="book_id" Type="Int32" Nullable="false" />
+    <Property Name="isreturn" Type="Int32" Nullable="false" />
+    <Property Name="returntime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="bookstatus" Relationship="Model.bring_book" FromRole="bring" ToRole="bookstatus" />
+    <NavigationProperty Name="person" Relationship="Model.bring_person" FromRole="bring" ToRole="person" />
+  </EntityType>
+  <Association Name="bring_book">
+    <End Type="Model.bookstatus" Role="bookstatus" Multiplicity="1" />
+    <End Type="Model.bring" Role="bring" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bookstatus">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bring">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bring_person">
+    <End Type="Model.person" Role="person" Multiplicity="1" />
+    <End Type="Model.bring" Role="bring" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bring">
+        <PropertyRef Name="person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

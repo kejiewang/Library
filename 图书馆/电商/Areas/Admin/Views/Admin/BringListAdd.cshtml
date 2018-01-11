@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    电商.Areas.Admin.Models.bookstatus b = ViewBag.b;
+}
+
+<!DOCTYPE html>
+
+<section class="wrapper">
+    <h3>
+        <i class="fa fa-angle-right"></i>
+        <a href="#">添加借阅</a>
+    </h3>
+    <!-- BASIC FORM ELELEMNTS -->
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div class="form-panel">
+                <form class="form-horizontal style-form" action="/admin/admin/addsave" method="post" enctype="multipart/form-data">
+
+                    <h1>@b.book.name</h1>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">借阅时间</label>
+                        <div class="col-sm-10">
+                            <input class="hidden" type="number" value="@b.id" id="bookid"/>
+                            <input class="form-control" type="date" value="" name="time" id="time">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">用户</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="user" value="" id="user" >
+                        </div>
+                    </div>
+                </form>
+                <div>
+                    <input type="submit" class="btn btn-primary" value="添加" onclick="send()" />
+                </div>
+            </div>
+        </div><!-- col-lg-12-->
+    </div><!-- /row -->
+
+</section><! --/wrapper -->
+
+<script src="~/bootstrap-3.3.7-dist/js/jquery-3.2.1.min.js"></script>
+<script>
+
+    function send() {
+        $.ajax({
+            type: 'POST',
+            url: '/admin/admin/BringListAddSave',
+            data: {
+                bookid: $("#bookid").val(),
+                time: $("#time").val(),
+                user: $("#user").val()
+            },
+            success: function (e) {
+                alert(e);
+                if (e == "借阅成功") {
+                    window.location.href = "/admin/admin/bookstatuslist";
+                }
+
+            }
+        });
+    }
+</script>
+

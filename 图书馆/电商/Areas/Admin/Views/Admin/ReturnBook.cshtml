@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    电商.Areas.Admin.Models.bring b = ViewBag.b;
+
+}
+
+<!DOCTYPE html>
+
+<section class="wrapper">
+    <h3>
+        <i class="fa fa-angle-right"></i>
+        <a href="#">归还操作</a>
+    </h3>
+    <!-- BASIC FORM ELELEMNTS -->
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div class="form-panel">
+
+                <form class="form-horizontal style-form" action="/admin/admin/ReturnBookSave" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                            
+                        <label class="col-sm-2 col-sm-2 control-label">归还时间</label>
+                        <div class="col-sm-10">
+                            <input class="hidden" type="number" value="@b.id" name="id" />
+                            <input class="form-control" type="date" value="" name="returntime" min="@b.bringtime">
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="submit" class="btn btn-primary" value="归还" />
+                            <input type="reset" class="btn btn-primary" value="重置" />
+                        </div>
+                    </div>
+                </form>
+
+
+
+            </div>
+        </div><!-- col-lg-12-->
+    </div><!-- /row -->
+
+</section><! --/wrapper -->

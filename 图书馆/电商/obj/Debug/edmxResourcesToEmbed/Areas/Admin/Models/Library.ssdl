@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="book">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="pulish_id" Type="int" Nullable="false" />
+    <Property Name="isdeal" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bookstatus">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="book_id" Type="int" Nullable="false" />
+    <Property Name="num" Type="int" Nullable="false" />
+    <Property Name="location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="bringnum" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bring">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="person_id" Type="int" Nullable="false" />
+    <Property Name="bringtime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="book_id" Type="int" Nullable="false" />
+    <Property Name="isreturn" Type="int" Nullable="false" />
+    <Property Name="returntime" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="time" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="num" Type="int" Nullable="false" />
+    <Property Name="isFinish" Type="int" Nullable="false" />
+    <Property Name="book_id" Type="int" Nullable="false" />
+    <Property Name="publish_id" Type="int" Nullable="false" />
+    <Property Name="endtime" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="person">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="work" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="publish">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isdeal" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="bookstatus_book">
+    <End Role="book" Type="Self.book" Multiplicity="1" />
+    <End Role="bookstatus" Type="Self.bookstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bookstatus">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bring_book">
+    <End Role="bookstatus" Type="Self.bookstatus" Multiplicity="1" />
+    <End Role="bring" Type="Self.bring" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bookstatus">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bring">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bring_person">
+    <End Role="person" Type="Self.person" Multiplicity="1" />
+    <End Role="bring" Type="Self.bring" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bring">
+        <PropertyRef Name="person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__book__pulish_id__35BCFE0A">
+    <End Role="publish" Type="Self.publish" Multiplicity="1" />
+    <End Role="book" Type="Self.book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="publish">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="book">
+        <PropertyRef Name="pulish_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order__publish_i__2F10007B">
+    <End Role="publish" Type="Self.publish" Multiplicity="1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="publish">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="publish_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="order_book">
+    <End Role="book" Type="Self.book" Multiplicity="1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bookstatus" EntityType="Self.bookstatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bring" EntityType="Self.bring" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="person" EntityType="Self.person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="publish" EntityType="Self.publish" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="bookstatus_book" Association="Self.bookstatus_book">
+      <End Role="book" EntitySet="book" />
+      <End Role="bookstatus" EntitySet="bookstatus" />
+    </AssociationSet>
+    <AssociationSet Name="bring_book" Association="Self.bring_book">
+      <End Role="bookstatus" EntitySet="bookstatus" />
+      <End Role="bring" EntitySet="bring" />
+    </AssociationSet>
+    <AssociationSet Name="bring_person" Association="Self.bring_person">
+      <End Role="person" EntitySet="person" />
+      <End Role="bring" EntitySet="bring" />
+    </AssociationSet>
+    <AssociationSet Name="FK__book__pulish_id__35BCFE0A" Association="Self.FK__book__pulish_id__35BCFE0A">
+      <End Role="publish" EntitySet="publish" />
+      <End Role="book" EntitySet="book" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order__publish_i__2F10007B" Association="Self.FK__order__publish_i__2F10007B">
+      <End Role="publish" EntitySet="publish" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="order_book" Association="Self.order_book">
+      <End Role="book" EntitySet="book" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
