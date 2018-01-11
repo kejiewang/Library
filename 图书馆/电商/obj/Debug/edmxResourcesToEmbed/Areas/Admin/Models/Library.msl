@@ -14,6 +14,7 @@
     <EntitySetMapping Name="book">
       <EntityTypeMapping TypeName="Model.book">
         <MappingFragment StoreEntitySet="book">
+          <ScalarProperty Name="author" ColumnName="author" />
           <ScalarProperty Name="isdeal" ColumnName="isdeal" />
           <ScalarProperty Name="pulish_id" ColumnName="pulish_id" />
           <ScalarProperty Name="price" ColumnName="price" />

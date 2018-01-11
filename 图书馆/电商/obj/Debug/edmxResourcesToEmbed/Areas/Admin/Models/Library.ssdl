@@ -10,6 +10,7 @@
     <Property Name="price" Type="int" Nullable="false" />
     <Property Name="pulish_id" Type="int" Nullable="false" />
     <Property Name="isdeal" Type="int" Nullable="false" />
+    <Property Name="author" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="bookstatus">
     <Key>

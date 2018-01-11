@@ -162,7 +162,7 @@ namespace 电商.Areas.Admin.Controllers
             ViewBag.publishid = publishid;
             return View();
         }
-        public ActionResult BookListAddSave(string publishid, string name, string type, string price)
+        public ActionResult BookListAddSave(string publishid, string name, string type, string price,string author)
         {
             if (name == "" || type == "")
             {
@@ -178,6 +178,7 @@ namespace 电商.Areas.Admin.Controllers
                     b.name = name;
                     b.price = Convert.ToInt32(price);
                     b.type = type;
+                    b.author = author;
                     db.book.Add(b);
                     db.SaveChanges();
                     return Content("添加成功");
@@ -203,7 +204,7 @@ namespace 电商.Areas.Admin.Controllers
             return View();
             
         }
-        public ActionResult BookListEditSave(int id, string publishid, string name, string type, string price)
+        public ActionResult BookListEditSave(int id, string publishid, string name, string type, string price,string author)
         {
             if (name == "" || type == "")
             {
@@ -217,6 +218,7 @@ namespace 电商.Areas.Admin.Controllers
                     电商.Areas.Admin.Models.book b = db.book.Find(id);
                     b.name = name;
                     b.price = Convert.ToInt32(price);
+                    b.author = author;
                     b.type = type;
                     db.SaveChanges();
                     return Content("编辑成功");

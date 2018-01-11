@@ -26,6 +26,7 @@ namespace 电商.Areas.Admin.Models
         public int price { get; set; }
         public int pulish_id { get; set; }
         public int isdeal { get; set; }
+        public string author { get; set; }
     
         public virtual publish publish { get; set; }
         public virtual ICollection<order> order { get; set; }

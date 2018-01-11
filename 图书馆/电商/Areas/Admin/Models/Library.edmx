@@ -15,6 +15,7 @@
           <Property Name="price" Type="int" Nullable="false" />
           <Property Name="pulish_id" Type="int" Nullable="false" />
           <Property Name="isdeal" Type="int" Nullable="false" />
+          <Property Name="author" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="bookstatus">
           <Key>
@@ -232,6 +233,7 @@
           <NavigationProperty Name="publish" Relationship="Model.FK__book__pulish_id__35BCFE0A" FromRole="book" ToRole="publish" />
           <NavigationProperty Name="order" Relationship="Model.order_book" FromRole="book" ToRole="order" />
           <NavigationProperty Name="bookstatus" Relationship="Model.bookstatus_book" FromRole="book" ToRole="bookstatus" />
+          <Property Name="author" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="publish">
           <Key>
@@ -376,6 +378,7 @@
           <EntitySetMapping Name="book">
             <EntityTypeMapping TypeName="Model.book">
               <MappingFragment StoreEntitySet="book">
+                <ScalarProperty Name="author" ColumnName="author" />
                 <ScalarProperty Name="isdeal" ColumnName="isdeal" />
                 <ScalarProperty Name="pulish_id" ColumnName="pulish_id" />
                 <ScalarProperty Name="price" ColumnName="price" />

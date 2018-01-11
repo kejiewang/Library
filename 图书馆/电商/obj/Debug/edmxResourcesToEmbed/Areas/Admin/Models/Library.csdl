@@ -55,6 +55,7 @@
     <NavigationProperty Name="publish" Relationship="Model.FK__book__pulish_id__35BCFE0A" FromRole="book" ToRole="publish" />
     <NavigationProperty Name="order" Relationship="Model.order_book" FromRole="book" ToRole="order" />
     <NavigationProperty Name="bookstatus" Relationship="Model.bookstatus_book" FromRole="book" ToRole="bookstatus" />
+    <Property Name="author" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="publish">
     <Key>
